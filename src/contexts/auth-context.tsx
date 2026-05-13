@@ -1,7 +1,9 @@
 "use client";
 
 import {
+  GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithPopup,
   signOut as firebaseSignOut,
   type User,
 } from "firebase/auth";
@@ -22,7 +24,9 @@ type AuthContextValue = {
   user: User | null;
   loading: boolean;
   firebaseConfigured: boolean;
+  signInWithGoogle: () => Promise<User>;
   signOut: () => Promise<void>;
+  getIdToken: (forceRefresh?: boolean) => Promise<string | null>;
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -59,9 +63,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await firebaseSignOut(auth);
   }, []);
 
+  const signInWithGoogle = useCallback(async () => {
+    const auth = getFirebaseAuth();
+    if (!auth) {
+      throw new Error(
+        "Firebase is not configured. Copy .env.local.example to .env.local.",
+      );
+    }
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
+    const credential = await signInWithPopup(auth, provider);
+    return credential.user;
+  }, []);
+
+  const getIdToken = useCallback(
+    async (forceRefresh = false) => {
+      if (!user) return null;
+      return user.getIdToken(forceRefresh);
+    },
+    [user],
+  );
+
   const value = useMemo(
-    () => ({ user, loading, firebaseConfigured, signOut }),
-    [user, loading, firebaseConfigured, signOut],
+    () => ({
+      user,
+      loading,
+      firebaseConfigured,
+      signInWithGoogle,
+      signOut,
+      getIdToken,
+    }),
+    [user, loading, firebaseConfigured, signInWithGoogle, signOut, getIdToken],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

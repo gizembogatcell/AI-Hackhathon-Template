@@ -2,7 +2,17 @@
 
 import Link from "next/link";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Alert, Button, Card, Flex, Form, Input, Spin, Typography } from "antd";
+import {
+  Alert,
+  Button,
+  Card,
+  Divider,
+  Flex,
+  Form,
+  Input,
+  Spin,
+  Typography,
+} from "antd";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -13,9 +23,30 @@ const { Title } = Typography;
 
 export default function LoginPage() {
   const router = useRouter();
-  const { firebaseConfigured, user, loading: authLoading } = useAuth();
+  const {
+    firebaseConfigured,
+    user,
+    loading: authLoading,
+    signInWithGoogle,
+  } = useAuth();
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [googleSubmitting, setGoogleSubmitting] = useState(false);
+
+  const onGoogle = async () => {
+    setError(null);
+    setGoogleSubmitting(true);
+    try {
+      await signInWithGoogle();
+      router.push("/dashboard");
+      router.refresh();
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : "Google sign-in failed";
+      setError(message);
+    } finally {
+      setGoogleSubmitting(false);
+    }
+  };
 
   const onFinish = async (values: { email: string; password: string }) => {
     setError(null);
@@ -87,6 +118,16 @@ export default function LoginPage() {
         {error && (
           <Alert type="error" message={error} style={{ marginBottom: 16 }} />
         )}
+        <Button
+          onClick={onGoogle}
+          loading={googleSubmitting}
+          disabled={!firebaseConfigured}
+          block
+          style={{ marginBottom: 16 }}
+        >
+          Continue with Google
+        </Button>
+        <Divider plain>or</Divider>
         <Form layout="vertical" onFinish={onFinish} autoComplete="off">
           <Form.Item
             name="email"
