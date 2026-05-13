@@ -1,0 +1,19 @@
+.env.local.example
+  s_70b41cf143aa11::t_eb482fec5ebace 6-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "538a7f3ca56112cf0aa751960c9ea77df24484c2",
+  "prompts": {},
+  "sessions": {
+    "s_70b41cf143aa11": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bfcf35a8-53fd-44d0-bcd9-566e19ee4974",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    }
+  }
+}
