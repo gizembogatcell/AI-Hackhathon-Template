@@ -1,0 +1,53 @@
+---
+description: HACKATHON WORKFLOW — 6-phase development sequence, documentation locations, and project conventions. Always included in every conversation.
+alwaysApply: true
+---
+
+# Hackathon Project Workflow
+
+## Phase Sequence
+
+Follow this order for every hackathon project:
+
+| Phase         | Subagent (`name`)     | Output                                      |
+| ------------- | --------------------- | ------------------------------------------- |
+| 1. BRAINSTORM | `#1 brainstorm`       | `docs/brainstorm-notes.md`                  |
+| 2. ANALYST    | `#2 analyst`          | `docs/brief.md` + `docs/stories/*.story.md` |
+| 3. ARCHITECT  | `#3 architect`        | `docs/architecture.md`                      |
+| 4. FE-DEV     | `#4 fe-dev`           | Frontend implementation                     |
+| 5. BE-DEV     | `#5 be-dev`           | Backend/API implementation                  |
+| 6. TESTER     | `#6 tester`           | Validated stories, bug reports              |
+
+> **#4 fe-dev** and **#5 be-dev** can work in parallel once **#3 architect** is complete.
+
+## Documentation Locations
+
+| Document         | Path                                | Created By          |
+| ---------------- | ----------------------------------- | ------------------- |
+| Brainstorm Notes | `docs/brainstorm-notes.md`          | #1 brainstorm       |
+| Project Brief    | `docs/brief.md`                     | #2 analyst          |
+| Architecture     | `docs/architecture.md`              | #3 architect        |
+| User Stories     | `docs/stories/{n}.{title}.story.md` | #2 analyst / sm     |
+
+## Core Conventions
+
+- All subagents read `docs/brief.md` before starting their phase
+- Dev subagents (**#4 fe-dev**, **#5 be-dev**) must read `docs/architecture.md` before writing any code
+- Stories must be `Approved` status before dev subagents implement them
+- Always present options as numbered lists
+- Use `*help` on activation to show available commands
+- Prefix all agent commands with `*`
+
+## Activating a Role (Subagents)
+
+Personas live in `.cursor/agents/01-…06-*.md`. Subagent `name` fields are **`#1 brainstorm`** … **`#6 tester`** (call order for the hackathon). In Cursor, **run a subagent** from the Subagents menu (or your client’s equivalent) and pick by that name.
+
+- **#1 brainstorm** — ideation → `docs/brainstorm-notes.md`
+- **#2 analyst** — brief + stories
+- **#3 architect** — `docs/architecture.md`
+- **#4 fe-dev** / **#5 be-dev** — implementation (often parallel)
+- **#6 tester** — QA validation
+
+You can also say e.g. “act as #2 analyst”; the model should follow the matching subagent file.
+
+**These subagents do not auto-spawn each other** — after `*handoff`, **you** start the next numbered subagent in Cursor.
