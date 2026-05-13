@@ -1,0 +1,61 @@
+hackathon-template/README.md
+  s_4e389efb51e344::t_a77f2b2723058a 42-44,80
+  s_4e389efb51e344::t_2981e5742add60 12-35,45-75,82-94,101-148
+hackathon-template/.cursor/agents/05-be-dev.md
+  s_4e389efb51e344::t_43b59d3d6258b1 1-68
+hackathon-template/.cursor/rules/00-project-workflow.mdc
+  s_4e389efb51e344::t_8ed20f0e94cb2c 34,36
+  s_4e389efb51e344::t_c179d23c0dde4d 43-49,51-53
+  s_4e389efb51e344::t_80f08381efc5a7 35
+  s_4e389efb51e344::t_aa016bb51380ff 12-21
+  s_4e389efb51e344::t_3e9b0665609e6d 25-26
+  s_4e389efb51e344::t_3ad35ab00694d0 41,50
+  s_4e389efb51e344::t_88e871741fbafd 30
+  s_4e389efb51e344::t_927d46223d3c57 27-29
+hackathon-template/.cursor/agents/06-tester.md
+  s_4e389efb51e344::t_a3939face7cc5b 1-71
+hackathon-template/.cursor/skills/brainstorm-session/SKILL.md
+  s_4e389efb51e344::t_6bd7bf20be8e56 78
+hackathon-template/docs/brief.md
+  s_4e389efb51e344::t_1b5ce683e54217 3-4
+hackathon-template/.cursor/skills/story-writing/SKILL.md
+  s_4e389efb51e344::t_7c4e51cdad3ac8 10-12
+  s_4e389efb51e344::t_0e1e0cab2d3465 57
+hackathon-template/.cursor/prompts/create-story.md
+  s_4e389efb51e344::t_52e647c53f16da 67
+hackathon-template/.cursor/skills/requirements-analysis/SKILL.md
+  s_4e389efb51e344::t_cdb959ff2d6e71 21
+  s_4e389efb51e344::t_4ef689ca380ed2 59
+hackathon-template/.cursor/agents/02-analyst.md
+  s_4e389efb51e344::t_a1aadf5e106587 1-2,4-8,10-12,14-23,25-30,32-40,47-60,62-75,77-80
+hackathon-template/.cursor/skills/architecture-design/SKILL.md
+  s_4e389efb51e344::t_2c815988fddabe 73
+  s_4e389efb51e344::t_53c4eb085983a5 12
+  s_4e389efb51e344::t_fc480b47b0b72f 3
+hackathon-template/.cursor/agents/04-fe-dev.md
+  s_4e389efb51e344::t_72e0ea978edf90 1-65
+hackathon-template/.cursor/skills/story-writing/story-template.md
+  s_4e389efb51e344::t_70d4d15faf187f 77
+hackathon-template/docs/architecture.md
+  s_4e389efb51e344::t_25709e0cf85d69 3-4
+hackathon-template/.cursor/agents/03-architect.md
+  s_4e389efb51e344::t_0422696083248f 1-17,20-22,25-76
+hackathon-template/.cursor/agents/01-brainstorm.md
+  s_4e389efb51e344::t_7911ee3583ef88 1-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "c33d2977fa0351f0c28cda977a739bb879dec2b3",
+  "prompts": {},
+  "sessions": {
+    "s_4e389efb51e344": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4ba77190-fffe-4dd4-8c19-e12200233e23",
+        "model": "default"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    }
+  }
+}
