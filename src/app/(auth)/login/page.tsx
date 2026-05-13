@@ -110,13 +110,13 @@ export default function LoginPage() {
           <Alert
             type="warning"
             showIcon
-            message="Missing Firebase env"
+            title="Missing Firebase env"
             description="Add NEXT_PUBLIC_FIREBASE_* keys from the Firebase console. See .env.local.example."
             style={{ marginBottom: 16 }}
           />
         )}
         {error && (
-          <Alert type="error" message={error} style={{ marginBottom: 16 }} />
+          <Alert type="error" title={error} style={{ marginBottom: 16 }} />
         )}
         <Button
           onClick={onGoogle}

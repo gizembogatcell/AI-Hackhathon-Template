@@ -60,7 +60,7 @@ export default function DashboardPage() {
         {loading ? (
           <Spin />
         ) : error ? (
-          <Alert type="error" message={error} />
+          <Alert type="error" title={error} />
         ) : profile ? (
           <pre style={{ margin: 0 }}>{JSON.stringify(profile, null, 2)}</pre>
         ) : (
