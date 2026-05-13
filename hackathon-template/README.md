@@ -17,10 +17,10 @@ Designed for hackathons: fast setup, structured thinking, AI-assisted execution.
 ## Workflow
 
 ```
-#1 BRAINSTORM  →  #2 ANALYST  →  #3 ARCHITECT  →  #4 FE-DEV + #5 BE-DEV  →  #6 TESTER
+#1 … #6  (mandatory pipeline)     optional:  #7 BROWSER-E2E (Playwright / headed UI)
 ```
 
-Each phase has a **Cursor subagent** in `.cursor/agents/`. The YAML `name` is prefixed **`#1` … `#6`** so call order matches the hackathon pipeline. Open the Subagents picker and choose by that name, or say e.g. “act as **#2 analyst**”.
+Each **core** phase has a subagent in `.cursor/agents/` (`#1` … `#6`). **`#7 browser-e2e`** is **optional** — only when you want real browser automation; it does **not** replace **#6** for lint/unit and AC sign-off.
 
 | Phase        | Subagent (`name`) | Command to activate          | Output                     |
 | ------------ | ----------------- | ---------------------------- | -------------------------- |
@@ -29,7 +29,8 @@ Each phase has a **Cursor subagent** in `.cursor/agents/`. The YAML `name` is pr
 | Architecture | `#3 architect`    | say "act as #3 architect"    | `docs/architecture.md`     |
 | Frontend     | `#4 fe-dev`       | say "act as #4 fe-dev"       | Implemented UI             |
 | Backend      | `#5 be-dev`       | say "act as #5 be-dev"       | Implemented API            |
-| QA           | `#6 tester`       | say "act as #6 tester"       | Validated stories          |
+| QA (code)    | `#6 tester`       | say "act as #6 tester"       | Lint/tests, AC evidence, bugs |
+| Browser E2E (optional) | `#7 browser-e2e` | say "act as #7 browser-e2e" | Playwright reports / traces |
 
 **#4** and **#5** are often parallel after **#3** finishes.
 
@@ -41,14 +42,16 @@ Each phase has a **Cursor subagent** in `.cursor/agents/`. The YAML `name` is pr
 .cursor/
 ├── rules/               ← Always-on workflow + coding standards (not personas)
 │   ├── 00-project-workflow.mdc    ← Always included (alwaysApply: true)
-│   └── 01-coding-standards.mdc   ← Included for src/ files
+│   ├── 01-coding-standards.mdc   ← Included for src/ files
+│   └── 02-fe-component-standards.mdc ← React/TS/JSX UI (#4 fe-dev + matching globs)
 ├── agents/              ← Numbered persona subagents (call order = filename order)
 │   ├── 01-brainstorm.md   (#1 brainstorm)
 │   ├── 02-analyst.md    (#2 analyst)
 │   ├── 03-architect.md  (#3 architect)
 │   ├── 04-fe-dev.md     (#4 fe-dev)
 │   ├── 05-be-dev.md     (#5 be-dev)
-│   └── 06-tester.md     (#6 tester)
+│   ├── 06-tester.md     (#6 tester — code / lint / unit AC)
+│   └── 07-browser-e2e.md (#7 browser-e2e — Playwright, optional)
 ├── prompts/             ← Quick single-purpose prompts (invoke with /)
 │   ├── create-brief.md
 │   ├── create-story.md
@@ -64,15 +67,21 @@ Each phase has a **Cursor subagent** in `.cursor/agents/`. The YAML `name` is pr
     ├── architecture-design/
     │   ├── SKILL.md
     │   └── adr-template.md
-    └── story-writing/
-        ├── SKILL.md
-        └── story-template.md
+    ├── story-writing/
+    │   ├── SKILL.md
+    │   └── story-template.md
+    └── playwright-e2e/
+        └── SKILL.md          ← Playwright / headed runs (**#7 browser-e2e** *e2e / *smoke)
 
 docs/
 ├── brainstorm-notes.md  ← #1 brainstorm
 ├── brief.md             ← #2 analyst
 ├── architecture.md      ← #3 architect
+├── e2e-playwright.md    ← optional Playwright + headed Chrome setup
 └── stories/             ← #2 analyst writes; #4 / #5 implement
+
+e2e/                     ← optional; add specs after docs/e2e-playwright.md
+└── README.md
 ```
 
 ---
@@ -116,16 +125,29 @@ docs/
 4. Story status becomes "Ready for Review" when done
 ```
 
-### Phase 5 — `#6 tester`
+### Phase 5 — `#6 tester` (code correctness)
 
 ```
 1. Run subagent #6 tester
-2. Run: *validate-story docs/stories/{n}.{title}.story.md
-3. Run: *bug-report  →  for any failures
-4. Story status becomes "Done" when all ACs pass
+2. *run-checks  →  lint + unit/integration (per package.json / architecture)
+3. *validate-story docs/stories/{n}.{title}.story.md  →  AC vs test evidence
+4. *bug-report  →  for any failures
+5. Story status → Done when ACs satisfied
 ```
 
----
+**#6** does **not** run Playwright. For headed browser E2E, use **`#7 browser-e2e`** below.
+
+### Optional — `#7 browser-e2e` (Playwright)
+
+When `e2e/` + Playwright are set up (`docs/e2e-playwright.md`):
+
+```
+1. Run subagent #7 browser-e2e
+2. *e2e  or  *smoke  →  npx playwright test --headed (or npm run e2e:headed)
+3. Share the summary with #6 if you need AC sign-off using browser evidence
+```
+
+`*validate-story` in **#6** uses **test logs and code-level proof**; **#7** adds **UI automation evidence** when you choose to run it.
 
 ## Quick Prompts (Slash Commands)
 
