@@ -1,0 +1,53 @@
+hackathon-template/.cursor/rules/02-fe-component-standards.mdc
+  s_4e389efb51e344::t_a3bf723559721e 1-2,4-106
+  s_4e389efb51e344::t_e43946270bdbfc 3
+hackathon-template/e2e/README.md
+  s_4e389efb51e344::t_6ba01d3f346045 1-4,7
+  s_4e389efb51e344::t_5c41e5a9b42fde 5-6
+hackathon-template/.cursor/agents/06-tester.md
+  s_4e389efb51e344::t_c446fbdd99ea7a 3,9-11,15-18,20,22-25,27,29-34,38-44,48-52,54,56-58,60,62-63,65,68,70,72-74
+hackathon-template/README.md
+  s_4e389efb51e344::t_c5ccb25f9a4cf1 20,23,32-33
+  s_4e389efb51e344::t_30c91051b1c677 80,82-84
+  s_4e389efb51e344::t_a29c53de54da74 128,132-135,138-150
+  s_4e389efb51e344::t_56f2b80ba2dd07 70-73
+  s_4e389efb51e344::t_46d9af8e7535b3 53-54
+  s_4e389efb51e344::t_31df689cae7efe 45-46
+  s_4e389efb51e344::t_def6681a5e4bf0 74
+hackathon-template/.cursor/agents/07-browser-e2e.md
+  s_4e389efb51e344::t_a3fc5d34bb262b 1-39
+hackathon-template/.cursor/agents/04-fe-dev.md
+  s_4e389efb51e344::t_366fce01e7b798 62
+  s_4e389efb51e344::t_da958dcf09e31c 3
+  s_4e389efb51e344::t_d5cbe54a675002 18-21
+hackathon-template/.cursor/rules/00-project-workflow.mdc
+  s_4e389efb51e344::t_43898d9cd780d0 2,8,19-25
+  s_4e389efb51e344::t_1b9138ff5d8e95 41
+  s_4e389efb51e344::t_197305a1101293 49,55-56
+hackathon-template/.cursor/skills/playwright-e2e/SKILL.md
+  s_4e389efb51e344::t_47bd32b4519978 3
+  s_4e389efb51e344::t_7e5e9a37ff141d 21
+  s_4e389efb51e344::t_a1352100eeb932 47
+  s_4e389efb51e344::t_85f5a773f1de5e 1-2,4-9,11-20,22-46,48-64
+  s_4e389efb51e344::t_062db6626edcc4 10
+hackathon-template/docs/e2e-playwright.md
+  s_4e389efb51e344::t_d9121ad9cb99e4 3
+  s_4e389efb51e344::t_a7f5c1074d34d2 68,70-72
+  s_4e389efb51e344::t_e32da77d4d565c 1-2,4-67,69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "96c794391321ad21155c460f35c6e72afc514558",
+  "prompts": {},
+  "sessions": {
+    "s_4e389efb51e344": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4ba77190-fffe-4dd4-8c19-e12200233e23",
+        "model": "default"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    }
+  }
+}
