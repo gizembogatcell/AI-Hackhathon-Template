@@ -1,0 +1,19 @@
+.gitignore
+  s_5aead2855bf60d::t_4754d8be033c4a 31-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "da262d68e31f7a7b564b028488400a7958c7f762",
+  "prompts": {},
+  "sessions": {
+    "s_5aead2855bf60d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6a8c274d-b26c-42c6-b0a9-55636b096211",
+        "model": "default"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    }
+  }
+}
