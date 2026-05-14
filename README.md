@@ -1,6 +1,6 @@
 # AI Hackathon Template — agent + app
 
-Single repo: **Next.js (App Router) + TypeScript + Ant Design + Firebase Auth (Google + Email) + MongoDB Atlas**, plus the existing **agent prompts** in `agents/` and the **Ant Design** example in `examples/`.
+Single repo: **Next.js (App Router) + TypeScript + Ant Design + Firebase Auth (Google + Email) + MongoDB Atlas**, plus the existing **agent prompts** in `agents/`.
 
 ## Commands
 
@@ -28,7 +28,7 @@ Routes: `/` (marketing), `/login`, `/dashboard` (protected), `/api/users/me` (au
 
 ## Stack conventions
 
-- **UI**: `antd` + `@ant-design/nextjs-registry` (`AntdRegistry` in `src/app/layout.tsx`, `ConfigProvider` in `src/app/providers.tsx`). Optional theming: see `examples/antd-config-provider-brand.example.tsx`.
+- **UI**: `antd` + `@ant-design/nextjs-registry` (`AntdRegistry` in `src/app/layout.tsx`, `ConfigProvider` in `src/app/providers.tsx`). Brand tokens: `src/theme/brand-tokens.ts` (see `.cursor/rules/03-antd-brand-theming.mdc`).
 - **Auth (client)**: Firebase JS SDK at `src/lib/firebase/client.ts`; session + Google sign-in via `AuthProvider` (`src/contexts/auth-context.tsx`). Protect routes with the pattern in `src/app/(app)/layout.tsx` — not middleware/cookies.
 - **Auth (server)**: API routes verify the Firebase ID token via `requireUser()` in `src/lib/api/auth.ts` (uses `firebase-admin`). Frontend attaches the token with `Authorization: Bearer <getIdToken()>`.
 - **Database**: MongoDB Atlas via the cached client in `src/lib/mongodb/client.ts` (`getDb()`). Only used from services / API routes — never from client components.

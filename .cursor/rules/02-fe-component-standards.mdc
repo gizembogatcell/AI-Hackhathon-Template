@@ -1,5 +1,5 @@
 ---
-description: React + TypeScript frontend standards for hackathon UI. #4 fe-dev must follow these when implementing components and pages.
+description: React + TypeScript frontend standards for hackathon UI.
 globs: "**/*.tsx,**/*.ts,**/*.jsx,**/*.js"
 alwaysApply: false
 ---

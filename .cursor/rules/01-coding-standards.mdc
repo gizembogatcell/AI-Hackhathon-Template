@@ -1,7 +1,7 @@
 ---
 description: Coding standards and best practices. Apply when writing, reviewing, or refactoring source code.
 globs: src/**
-alwaysApply: false
+alwaysApply: true
 ---
 
 # Coding Standards
