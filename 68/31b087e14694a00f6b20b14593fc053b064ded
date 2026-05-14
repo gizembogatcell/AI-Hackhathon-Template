@@ -1,0 +1,51 @@
+src/app/antd-theme.ts
+  s_dcbed1303bb6c6::t_418f2f42f6c06d 81-95,97-107,139-140
+  s_dcbed1303bb6c6::t_bcbdaac7ebd3ed 108-109,127-129,141-313
+  s_dcbed1303bb6c6::t_76b492774b1eee 1-2,4,79-80,96,110-126,130-138,314-315
+  s_3cbe4ee98cfaf6::t_d2b9cadb31519b 3,5-78,316-342
+.vscode/settings.json
+  s_70b41cf143aa11::t_7379a0c1256dc0 1,5
+src/app/theme-test/page.tsx
+  s_3cbe4ee98cfaf6::t_2710d49e28844c 69,71,144-145,153,219,222-223
+  s_dcbed1303bb6c6::t_c39d0a995f10d3 171
+  s_dcbed1303bb6c6::t_5f439067cf7cb6 1-68,70,72-143,146-152,154-170,172-218,220-221,224-247
+next-env.d.ts
+  s_3cbe4ee98cfaf6::t_b58396aad2b1eb 3
+src/app/providers.tsx
+  s_3cbe4ee98cfaf6::t_a06debb6088b22 5-10,13-25,28,30
+  s_3cbe4ee98cfaf6::t_9bf699de48420d 26-27
+.gitignore
+  s_dcbed1303bb6c6::t_14281efdaad100 35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "6831b087e14694a00f6b20b14593fc053b064ded",
+  "prompts": {},
+  "sessions": {
+    "s_3cbe4ee98cfaf6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "bba7cb4a-d0c2-4483-aad9-91473c921f6c",
+        "model": "gpt-5.5"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    },
+    "s_70b41cf143aa11": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bfcf35a8-53fd-44d0-bcd9-566e19ee4974",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    },
+    "s_dcbed1303bb6c6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "82863bec-c986-44b2-b5e2-3d8e80e5a6a0",
+        "model": "gpt-5.5"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    }
+  }
+}
