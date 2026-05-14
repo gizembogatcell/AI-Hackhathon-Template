@@ -4,6 +4,7 @@ import { Alert, Card, Flex, Spin, Typography } from "antd";
 import { useEffect, useState } from "react";
 
 import { useAuth } from "@/hooks/use-auth";
+import { userProfileResponseSchema } from "@/lib/validations/user.schema";
 import type { UserProfile } from "@/types/user";
 
 const { Title, Paragraph } = Typography;
@@ -16,23 +17,42 @@ export default function DashboardPage() {
 
   useEffect(() => {
     let cancelled = false;
-    (async () => {
+
+    async function fetchProfile() {
       try {
         const token = await getIdToken();
         if (!token) {
           if (!cancelled) setLoading(false);
           return;
         }
+
         const res = await fetch("/api/users/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        const body = await res.json();
+        const body: unknown = await res.json();
+
         if (cancelled) return;
+
         if (!res.ok) {
-          setError(body?.error?.message ?? "Request failed");
-        } else {
-          setProfile(body.data as UserProfile);
+          const msg =
+            body &&
+            typeof body === "object" &&
+            "error" in body &&
+            body.error &&
+            typeof body.error === "object" &&
+            "message" in body.error
+              ? String(body.error.message)
+              : "Request failed";
+          setError(msg);
+          return;
         }
+
+        const parsed = userProfileResponseSchema.safeParse(body);
+        if (!parsed.success) {
+          setError("Unexpected response format");
+          return;
+        }
+        setProfile(parsed.data.data);
       } catch (e: unknown) {
         if (!cancelled) {
           setError(e instanceof Error ? e.message : "Request failed");
@@ -40,7 +60,9 @@ export default function DashboardPage() {
       } finally {
         if (!cancelled) setLoading(false);
       }
-    })();
+    }
+
+    fetchProfile();
     return () => {
       cancelled = true;
     };
@@ -57,18 +79,29 @@ export default function DashboardPage() {
         <code>/api/users/me</code> (Firebase-verified, MongoDB-backed).
       </Paragraph>
       <Card title="Your MongoDB profile">
-        {loading ? (
-          <Spin />
-        ) : error ? (
-          <Alert type="error" title={error} />
-        ) : profile ? (
-          <pre style={{ margin: 0 }}>{JSON.stringify(profile, null, 2)}</pre>
-        ) : (
-          <Paragraph type="secondary" style={{ margin: 0 }}>
-            Not signed in.
-          </Paragraph>
-        )}
+        <ProfileContent loading={loading} error={error} profile={profile} />
       </Card>
     </Flex>
+  );
+}
+
+type ProfileContentProps = {
+  loading: boolean;
+  error: string | null;
+  profile: UserProfile | null;
+};
+
+function ProfileContent({ loading, error, profile }: ProfileContentProps) {
+  if (loading) return <Spin />;
+  if (error) return <Alert type="error" message={error} />;
+  if (profile) {
+    return (
+      <pre style={{ margin: 0 }}>{JSON.stringify(profile, null, 2)}</pre>
+    );
+  }
+  return (
+    <Typography.Paragraph type="secondary" style={{ margin: 0 }}>
+      Not signed in.
+    </Typography.Paragraph>
   );
 }

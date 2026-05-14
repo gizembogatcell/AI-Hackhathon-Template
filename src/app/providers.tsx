@@ -3,11 +3,11 @@
 import { ConfigProvider } from "antd";
 
 import {
-  antdNeonTheme,
+  brandTheme,
   getThemeByKey,
   type AntdTheme,
   type AppTheme,
-} from "@/app/antd-theme";
+} from "@/theme/antd-theme";
 import { AuthProvider } from "@/contexts/auth-context";
 
 type AppProvidersProps = {
@@ -24,7 +24,7 @@ export function AppProviders({
   themeKey,
 }: AppProvidersProps) {
   const activeTheme =
-    theme ?? getThemeByKey(themeKey, customThemes) ?? antdNeonTheme;
+    theme ?? getThemeByKey(themeKey, customThemes) ?? brandTheme;
 
   return (
     <ConfigProvider theme={activeTheme}>

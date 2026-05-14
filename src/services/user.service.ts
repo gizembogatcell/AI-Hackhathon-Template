@@ -7,11 +7,20 @@ import type { UserProfile } from "@/types/user";
 
 type UserDoc = UserProfile;
 
+let cachedCollection: Collection<UserDoc> | null = null;
+
 async function usersCollection(): Promise<Collection<UserDoc>> {
+  if (cachedCollection) {
+    return cachedCollection;
+  }
   const db = await getDb();
-  const col = db.collection<UserDoc>("users");
+  cachedCollection = db.collection<UserDoc>("users");
+  return cachedCollection;
+}
+
+export async function ensureIndexes(): Promise<void> {
+  const col = await usersCollection();
   await col.createIndex({ uid: 1 }, { unique: true });
-  return col;
 }
 
 export async function getUserByUid(uid: string): Promise<UserProfile | null> {
@@ -44,7 +53,10 @@ export async function upsertUserFromToken(args: {
   };
 
   await col.updateOne({ uid: args.uid }, update, { upsert: true });
-  const doc = await col.findOne({ uid: args.uid }, { projection: { _id: 0 } });
+  const doc = await col.findOne(
+    { uid: args.uid },
+    { projection: { _id: 0 } },
+  );
   if (!doc) {
     throw new Error("Failed to upsert user");
   }

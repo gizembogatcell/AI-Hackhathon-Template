@@ -6,3 +6,16 @@ export const upsertUserSchema = z.object({
 });
 
 export type UpsertUserInput = z.infer<typeof upsertUserSchema>;
+
+export const userProfileSchema = z.object({
+  uid: z.string(),
+  email: z.string().nullable(),
+  displayName: z.string().nullable(),
+  photoURL: z.string().nullable(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+
+export const userProfileResponseSchema = z.object({
+  data: userProfileSchema,
+});

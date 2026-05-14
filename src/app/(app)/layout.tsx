@@ -1,13 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { Button, Flex, Spin, Typography } from "antd";
+import { Flex, Spin } from "antd";
 
+import { AppHeader } from "@/components/layout/app-header";
 import { useAuth } from "@/hooks/use-auth";
-
-const { Title, Paragraph } = Typography;
 
 export default function AppGroupLayout({
   children,
@@ -18,10 +16,7 @@ export default function AppGroupLayout({
   const router = useRouter();
 
   useEffect(() => {
-    if (loading) {
-      return;
-    }
-    if (!user) {
+    if (!loading && !user) {
       router.replace("/login");
     }
   }, [user, loading, router]);
@@ -38,30 +33,13 @@ export default function AppGroupLayout({
     return null;
   }
 
+  const handleSignOut = () => {
+    signOut().catch(console.error);
+  };
+
   return (
     <div style={{ minHeight: "100vh" }}>
-      <Flex
-        justify="space-between"
-        align="center"
-        style={{
-          padding: "12px 24px",
-          borderBottom: "1px solid rgba(0,0,0,0.06)",
-        }}
-      >
-        <Link href="/">
-          <Title level={5} style={{ margin: 0 }}>
-            Hackathon app
-          </Title>
-        </Link>
-        <Flex gap="small" align="center">
-          <Paragraph style={{ margin: 0 }} type="secondary" ellipsis>
-            {user.email}
-          </Paragraph>
-          <Button size="small" onClick={() => signOut()}>
-            Sign out
-          </Button>
-        </Flex>
-      </Flex>
+      <AppHeader email={user.email} onSignOut={handleSignOut} />
       {children}
     </div>
   );
