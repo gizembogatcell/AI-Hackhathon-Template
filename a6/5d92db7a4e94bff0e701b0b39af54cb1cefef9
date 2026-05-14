@@ -1,0 +1,21 @@
+.cursor/rules/commit-standards.mdc
+  s_1ce71defcc97e3::t_ad66e08282c5ee 1-45
+.cursor/rules/unit-test-standards.mdc
+  s_1ce71defcc97e3::t_ebced2d6c1f940 1-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "a65d92db7a4e94bff0e701b0b39af54cb1cefef9",
+  "prompts": {},
+  "sessions": {
+    "s_1ce71defcc97e3": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b5c6fefe-9fad-4721-a8b8-f6b4609ecb47",
+        "model": "gpt-5.5"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    }
+  }
+}
