@@ -1,0 +1,33 @@
+src/app/antd-theme.ts
+  s_1ebfb1eb8e420f::t_72e1e8e8492065 1-342
+src/app/theme-test/page.tsx
+  s_1ebfb1eb8e420f::t_72e1e8e8492065 1-247
+src/app/providers.tsx
+  s_1ebfb1eb8e420f::t_72e1e8e8492065 6,10,27
+.cursor/skills/commit-rule/SKILL.md
+  s_0f8120faa0afd2::t_e35be6d7545c95 1-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "855a8e5bf502ac263ce1ae17b9fdc82dbdc3e127",
+  "prompts": {},
+  "sessions": {
+    "s_0f8120faa0afd2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "0ef83ca0-dc2b-4a93-aee2-a03d15910ac5",
+        "model": "gpt-5.5"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    },
+    "s_1ebfb1eb8e420f": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "c7a7f19a-6ebf-4098-bd42-309945d5e994",
+        "model": "gpt-5.5"
+      },
+      "human_author": "TCGBOGA <gizem.boga@turkcell.com.tr>"
+    }
+  }
+}
